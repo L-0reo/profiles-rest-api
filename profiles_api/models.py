@@ -15,7 +15,7 @@ class UserProfileManager(BaseUserManager):
         email = self.normalize_email(email)
         user = self.model(email=email, name=name) #by default the model here is set to the type of model that the manager is for
 
-        user.set_password(password)
+        user.set_password(password) #this encrypts the password before being stored in the database (for security)
         user.save(using=self.db) #standard save into database
 
         return user
